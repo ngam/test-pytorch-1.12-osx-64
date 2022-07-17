@@ -1,10 +1,10 @@
-name: Python Package using Conda
+name: macos10
 
 on: [push]
 
 jobs:
-  build-linux:
-    runs-on: macos-12
+  macos12:
+    runs-on: macos-10
     strategy:
       max-parallel: 5
 

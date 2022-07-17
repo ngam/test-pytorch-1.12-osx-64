@@ -1,0 +1,27 @@
+name: macos12
+
+on: [push]
+
+jobs:
+  macos12:
+    runs-on: macos-12
+    strategy:
+      max-parallel: 5
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.9
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
+    - name: Install dependencies
+      run: |
+        conda create -n test pytorch==1.12 -c ngam -c conda-forge
+    - name: Test
+      run: |
+        /usr/local/miniconda/envs/test/bin/python -c "import torch; assert torch.backends.mps.is_built()"
+        /usr/local/miniconda/envs/test/bin/python -c "import torch; assert torch.backends.mps.is_available()"
