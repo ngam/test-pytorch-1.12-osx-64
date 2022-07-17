@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: |
         conda init
-        source ~/.zshrc
+        source ~/.bashrc
         conda activate test
         python -c "import torch; assert torch.backends.mps.is_built()"
         python -c "import torch; assert torch.backends.mps.is_available()"
