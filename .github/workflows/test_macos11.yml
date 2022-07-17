@@ -3,7 +3,7 @@ name: macos11
 on: [push]
 
 jobs:
-  macos12:
+  macos11:
     runs-on: macos-11
     strategy:
       max-parallel: 5
