@@ -23,8 +23,5 @@ jobs:
         conda create -n test pytorch==1.12 -c ngam -c conda-forge
     - name: Test
       run: |
-        conda init bash
-        source ~/.bashrc
-        conda activate test
-        python -c "import torch; assert torch.backends.mps.is_built()"
-        python -c "import torch; assert torch.backends.mps.is_available()"
+        /usr/local/miniconda/envs/test/bin/python -c "import torch; print(torch.backends.mps.is_built())"
+        /usr/local/miniconda/envs/test/bin/python -c "import torch; print(torch.backends.mps.is_available())"
