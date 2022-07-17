@@ -20,7 +20,7 @@ jobs:
         echo $CONDA/bin >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        conda install pytorch==1.12 -c ngam --name test
+        conda env create pytorch==1.12 -c ngam --name test
     - name: Test
       run: |
         conda activate test
